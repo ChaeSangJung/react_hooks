@@ -4,6 +4,7 @@ import { UserContext } from "./context";
 
 const Screen = () => {
   const { logUserIn } = useContext(UserContext);
+  
   return (
     <div>
       <Header />
