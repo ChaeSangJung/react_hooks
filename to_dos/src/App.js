@@ -9,10 +9,10 @@ const ADD = "add";
 const reducer = (state, action) => {
   switch (action.type) {
     case ADD:
-      return { toDos: [...state.toDos, { text: action.payload }] };
+      return { toDos: [...state.toDos, { id: Date.now(), text: action.payload }] };
     default:
       return;
-  }
+  }  
 };
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
   const [newToDo, setNewToDo] = useState("");
   const onSubmit = e => {
     e.preventDefault();
-    dispatch({ type: ADD, payload: newToDo });
+    dispatch({ type: ADD, payload: newToDo });    
   };
   const onChange = e => {
     const {
@@ -42,8 +42,8 @@ function App() {
 
       <ul>
         <h2>To Dos</h2>
-        {state.toDos.map((toDo, index) => (
-          <li key={index}>{toDo.text}</li>
+        {state.toDos.map((toDo) => (
+          <li key={toDo.id}>{toDo.text}</li>
         ))}
       </ul>
     </>
