@@ -1,6 +1,11 @@
 import React, { useReducer, useState } from "react";
-import reducer, { initialState, ADD, DEL, COMPLETE } from "./reducer";
-
+import reducer, {
+  initialState,
+  ADD,
+  DEL,
+  COMPLETE,
+  UNCOMPLETE
+} from "./reducer";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -47,7 +52,8 @@ function App() {
             {state.completed.map(toDo => (
               <li key={toDo.id}>
                 <span>{toDo.text}</span>
-                <button onClick={() => dispatch({ type: DEL, payload: toDo.id })}>💋 DEL</button>
+                <button onClick={() => dispatch({ type: DEL, payload: toDo.id })}>💋 DEL</button>                        
+                <button onClick={() => dispatch({ type: UNCOMPLETE, payload: toDo.id })}>🤦‍♂️ Uncomplete</button>                        
               </li>
             ))}
           </>
