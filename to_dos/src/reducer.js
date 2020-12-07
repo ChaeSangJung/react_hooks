@@ -11,7 +11,7 @@ const reducer = (state, action) => {
     case ADD:
       return {
         ...state,
-        toDos: [...state.toDos, { text: action.payload, id: uuid() }]
+        toDos: [...state.toDos, { text: action.payload, id: uuidv4() }]
       };
     case DEL:
       return {
